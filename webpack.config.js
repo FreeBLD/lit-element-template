@@ -25,6 +25,18 @@ module.exports = ({ mode }) => {
                 }
             ])
         ],
+        module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: 'ts-loader'
+            },
+            {
+                test: /\.test.js$/,
+                use: 'jest'
+            }
+            ]
+        },
         devtool: mode === 'development' ? 'source-map' : 'none',
         devServer: {
             contentBase: path.join(__dirname, '/dist'),
