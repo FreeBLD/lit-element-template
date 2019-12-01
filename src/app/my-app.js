@@ -9,7 +9,7 @@ class MyApp extends LitElement {
                 display: inline;
             }
         </style>
-        <h1>Hello World</h1>
+        <h1>Hello Double World</h1>
         `;
     }
 }
