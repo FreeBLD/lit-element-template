@@ -7,6 +7,7 @@ module.exports = ({ mode }) => {
     return {
         mode,
         entry: path.join(__dirname, 'src', 'index.js'),
+        //devtool: 'inline-source-map',
         output: {
             path: path.join(__dirname, "/dist"),
             filename: "index_bundle.js"
@@ -29,13 +30,22 @@ module.exports = ({ mode }) => {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader'
+                use: 'ts-loader',
+                exclude: '/node_modules/'
             },
             {
                 test: /\.test.js$/,
                 use: 'jest'
+            },
+            { 
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader'
             }
             ]
+        },
+        resolve: {
+            extensions: ['.ts', '.js']
         },
         devtool: mode === 'development' ? 'source-map' : 'none',
         devServer: {
