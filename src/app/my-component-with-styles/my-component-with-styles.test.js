@@ -1,27 +1,7 @@
-import {LitElement, html, css} from 'lit-element';
+const myComponentWithStyles = require('./my-component-with-styles');
 
-@customElement('my-component-with-styles')
-export class MyComponentWithStyles extends LitElement {
-    static get styles() {
-        const style = css`
-            :host {
-                color: red;
-            }
-        `;
-        const style2 = css`
-            :host {
-                display: inline;
-            }
-        `;
-        return [style, style2];
-    }
+const testing = new myComponentWithStyles();
 
-    constructor() {
-        super();
-    }
-
-
-    render() {
-        return html`<h1>Hello World</h1>`;
-    }
-}
+test('myComponentWithStyles should be loaded', () => {
+    expect(testing).toBe(true);
+});

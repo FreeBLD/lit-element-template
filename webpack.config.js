@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = ({ mode }) => {
     return {
         mode,
-        entry: path.join(__dirname, 'src', 'index.js'),
+        entry: path.join(__dirname, 'src', 'index.ts'),
         //devtool: 'inline-source-map',
         output: {
             path: path.join(__dirname, "/dist"),
@@ -15,7 +15,7 @@ module.exports = ({ mode }) => {
         plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
-                entry: 'index.js',
+                entry: 'index.ts',
                 template: path.resolve(__dirname, 'src/', 'index.html')
             }),
             new CopyWebpackPlugin([
