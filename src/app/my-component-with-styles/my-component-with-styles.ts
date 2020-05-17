@@ -1,5 +1,6 @@
-import {LitElement, html, css} from 'lit-element';
+import {LitElement, html, css, customElement} from 'lit-element';
 
+@customElement('my-component-with-styles')
 export class MyComponentWithStyles extends LitElement {
     static get styles() {
         const style = css`
@@ -24,4 +25,3 @@ export class MyComponentWithStyles extends LitElement {
         return html`<h1>Hello World</h1>`;
     }
 }
-customElements.define('my-component-with-styles', MyComponentWithStyles);
