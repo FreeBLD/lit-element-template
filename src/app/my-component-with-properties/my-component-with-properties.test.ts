@@ -11,8 +11,8 @@ describe("Test Case for the MyComponentWithProperties Class", () => {
         myComponentWithProperties = null;
     });
 
-
     test("MyComponentwithProperties has a property 'string' with value of 'string'", () => {
         expect(myComponentWithProperties.string).toBe('string');
     });
+
 })

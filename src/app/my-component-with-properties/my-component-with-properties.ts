@@ -12,7 +12,6 @@ export class MyComponentWithProperties extends LitElement {
         super();
     }
 
-
     render() {
         return html`
             <h1>${this.string} Works</h1>

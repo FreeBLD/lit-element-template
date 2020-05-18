@@ -37,11 +37,13 @@ module.exports = ({ mode }) => {
             },
             {
                 test: /\.test.js$/,
-                use: 'jest'
+                use: 'jest',
+                exclude: '/node_modules/'
             },
             {
                 test: /\.test.ts$/,
-                use: 'ts-jest'
+                use: 'ts-jest',
+                exclude: '/node_modules/'
             },
             { 
                 enforce: 'pre',
