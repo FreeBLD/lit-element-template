@@ -18,13 +18,15 @@ module.exports = ({ mode }) => {
                 entry: 'index.ts',
                 template: path.resolve(__dirname, 'src/', 'index.html')
             }),
-            new CopyWebpackPlugin([
-                {
-                    context: 'node_modules/@webcomponents/webcomponentsjs',
-                    from: '**/*.js',
-                    to: 'webcomponents'
-                }
-            ])
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        context: 'node_modules/@webcomponents/webcomponentsjs',
+                        from: '**/*.js',
+                        to: 'webcomponents'
+                    }
+                ]
+            })
         ],
         module: {
         rules: [
@@ -52,6 +54,9 @@ module.exports = ({ mode }) => {
             extensions: ['.ts', '.js']
         },
         devtool: mode === 'development' ? 'source-map' : 'none',
+        watchOptions: {
+            ignored: /node_modules/
+        },
         devServer: {
             contentBase: path.join(__dirname, '/dist'),
             compress: true,
