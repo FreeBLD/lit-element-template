@@ -1,4 +1,9 @@
 module.exports = {
-    preset: 'ts-jest',
-    //testRegex: "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    transformIgnorePatterns: [
+        "node_modules/(?!(lit-.*)/)"
+    ],
+    //testResultsProcessor: "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+    transform: {
+      ".(ts|tsx)": "ts-jest"
+    }
 }
