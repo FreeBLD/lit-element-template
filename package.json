@@ -7,7 +7,7 @@
     "serve": "webpack-dev-server --env.mode development",
     "dev": "webpack --env.mode development",
     "prod": "webpack --env.mode production",
-    "test": "jest"
+    "test": "webpack-dev-server --env.mode none --config webpack-test.config.js"
   },
   "keywords": [
     "lit-element",
@@ -24,12 +24,16 @@
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.0.1",
     "lit-element": "^2.2.1",
+    "mocha": "^7.1.2",
+    "mocha-loader": "^5.0.0",
     "source-map-loader": "^0.2.4",
     "ts-jest": "^26.0.0",
     "ts-loader": "^7.0.4",
     "typescript": "^3.9.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
-  }
+    "webpack-dev-server": "^3.11.0",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "dependencies": {}
 }

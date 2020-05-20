@@ -6,6 +6,7 @@
         "module": "CommonJS",
         "target": "ES2015",
         "allowJs": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "moduleResolution": "Node"
     }
 }

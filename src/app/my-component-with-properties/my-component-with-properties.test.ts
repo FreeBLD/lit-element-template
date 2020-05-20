@@ -1,5 +1,3 @@
-/// <reference types="jest" />
-
 import  { MyComponentWithProperties } from "./my-component-with-properties";
 
 let myComponentWithProperties: MyComponentWithProperties;

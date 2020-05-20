@@ -1,30 +1,34 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const path = require('path');
  
 module.exports = ({ mode }) => {
     return {
         mode,
-        entry: path.join(__dirname, 'src', 'index.ts'),
-        output:  {
-            path: path.join(__dirname, "/dist"),
-            filename: "index_bundle.js"
-        }, 
+        entry: path.join(__dirname, '.', 'test.js'),
+        output: {
+            path: path.join(__dirname, "/test"),
+            filename: "test_bundle.js"
+        },
         plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
-                entry: 'index.ts',
+                entry: 'test.js',
                 template: path.resolve(__dirname, 'src/', 'index.html')
             }),
             new CopyWebpackPlugin({
                 patterns: [
                     {
-                        context: 'node_modules/@webcomponents/webcomponentsjs',
-                        from: '**/*.js',
-                        to: 'webcomponents'
+                        from: '**/*.test.ts',
+                        to: 'test',
+                        flatten: true,
                     }
                 ]
+            }),
+            new WebpackShellPlugin({
+                onBuildExit: "mocha test_bundle.js"
             })
         ],
         module: {
@@ -41,7 +45,7 @@ module.exports = ({ mode }) => {
             },
             {
                 test: /\.test\.ts$/,
-                use: 'mocha-loader',
+                use: [ 'mocha-loader', 'ts-loader'],
                 exclude: /node_modules/
             },
             { 
@@ -59,9 +63,9 @@ module.exports = ({ mode }) => {
             ignored: /node_modules/
         },
         devServer: {
-            contentBase: path.join(__dirname, '/dist'),
+            contentBase: path.join(__dirname, '/test'),
             compress: true,
-            port: 9000,
+            port: 9010,
             inline: true,
             liveReload: true
             //hot: true
