@@ -1,5 +1,6 @@
 import { MyComponentWithStyles } from './my-component-with-styles';
 import { render } from 'lit-html';
+import * as assert from 'assert';
 
 const testing = new MyComponentWithStyles();
 
@@ -23,10 +24,10 @@ test('myComponentWithStyles should be loaded', () => {
 });
 */
 
-describe('MyComponentWithStyles', () => {
-    describe('styling of the component', () => {
-        it('should be truthy', () => {
-            expect(testing).toBeTruthy();
+describe('MyComponentWithStyles', function() {
+    describe('styling of the component', function() {
+        it('should be truthy', function() {
+            assert.strictEqual(testing, true);
         })
     });
 })

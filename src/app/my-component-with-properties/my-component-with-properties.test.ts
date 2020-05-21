@@ -1,4 +1,5 @@
-import  { MyComponentWithProperties } from "./my-component-with-properties";
+import  { MyComponentWithProperties } from './my-component-with-properties';
+import * as assert from 'assert';
 
 let myComponentWithProperties: MyComponentWithProperties;
 
@@ -11,8 +12,8 @@ describe("Test Case for the MyComponentWithProperties Class", () => {
         myComponentWithProperties = null;
     });
 
-    test("MyComponentwithProperties has a property 'string' with value of 'string'", () => {
-        expect(myComponentWithProperties.string).toBe('string');
+    it("MyComponentwithProperties has a property 'string' with value of 'string'", () => {
+        assert.equal(myComponentWithProperties.string, 'string');
     });
 
 })

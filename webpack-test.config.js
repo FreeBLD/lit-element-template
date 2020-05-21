@@ -9,27 +9,19 @@ module.exports = ({ mode }) => {
         mode,
         entry: path.join(__dirname, '.', 'test.js'),
         output: {
-            path: path.join(__dirname, "/test"),
-            filename: "test_bundle.js"
+            path: path.join(__dirname, '/test'),
+            filename: 'test_bundle.js',
         },
         plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
-                entry: 'test.js',
-                template: path.resolve(__dirname, 'src/', 'index.html')
+                template: path.resolve(__dirname, '.', 'test.html')
             }),
-            new CopyWebpackPlugin({
-                patterns: [
-                    {
-                        from: '**/*.test.ts',
-                        to: 'test',
-                        flatten: true,
-                    }
-                ]
-            }),
+            /*
             new WebpackShellPlugin({
-                onBuildExit: "mocha test_bundle.js"
+                onBuildExit: "mocha "+ path.resolve(__dirname, 'test/', 'test_bundle.js')
             })
+            */
         ],
         module: {
         rules: [
@@ -45,7 +37,7 @@ module.exports = ({ mode }) => {
             },
             {
                 test: /\.test\.ts$/,
-                use: [ 'mocha-loader', 'ts-loader'],
+                use: [ 'mocha-loader', 'ts-loader' ],
                 exclude: /node_modules/
             },
             { 
