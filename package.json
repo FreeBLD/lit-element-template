@@ -13,7 +13,9 @@
   "keywords": [
     "lit-element",
     "template",
-    "jest testing"
+    "mocha unit testing",
+    "karma runner",
+    "webpack"
   ],
   "author": "Cristian Pogolsha",
   "license": "ISC",
