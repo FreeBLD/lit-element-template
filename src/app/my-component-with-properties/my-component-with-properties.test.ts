@@ -3,7 +3,7 @@ import * as assert from 'assert';
 
 let myComponentWithProperties: MyComponentWithProperties;
 
-describe("Test Case for the MyComponentWithProperties Class", () => {
+describe("Test Case for the MyComponentWithProperties Class", function() {
     beforeEach(() => {
         myComponentWithProperties = new MyComponentWithProperties();
     })
@@ -12,7 +12,7 @@ describe("Test Case for the MyComponentWithProperties Class", () => {
         myComponentWithProperties = null;
     });
 
-    it("MyComponentwithProperties has a property 'string' with value of 'string'", () => {
+    it("MyComponentwithProperties has a property 'string' with value of 'string'", function() {
         assert.equal(myComponentWithProperties.string, 'string');
     });
 

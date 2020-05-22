@@ -2,7 +2,6 @@ import {LitElement, html, css, customElement} from 'lit-element';
 
 @customElement('my-component-with-styles')
 export class MyComponentWithStyles extends LitElement {
-    /*
     static get styles() {
         const style = css`
             :host {
@@ -11,18 +10,12 @@ export class MyComponentWithStyles extends LitElement {
             }
         `;
         const style2 = css`
-            h1 {
-                display: inline;
-            }
-        `;
-        const style3 = css`
             h2 {
-                display: inline;
+                display: block;
             }
         `;
-        return [style, style2, style3];
+        return [style, style2];
     }
-    */
 
     constructor() {
         super();
@@ -31,12 +24,6 @@ export class MyComponentWithStyles extends LitElement {
 
     render() {
         return html`
-                    <style>
-                        :host {
-                            color: red;
-                            display: inline;
-                        }
-                    </style>
                     <h1>Hello </h1>
                     <h2> World!</h2>
         `;

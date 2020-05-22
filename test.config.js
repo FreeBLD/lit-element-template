@@ -1,3 +1,4 @@
+// This is a webpack style config file for unit testing using mocha
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -7,21 +8,16 @@ const path = require('path');
 module.exports = ({ mode }) => {
     return {
         mode,
-        entry: path.join(__dirname, '.', 'test.js'),
+        entry: path.resolve(__dirname, '.', 'allTests.js'),
         output: {
             path: path.join(__dirname, '/test'),
-            filename: 'test_bundle.js',
+            filename: 'testBundle.js',
         },
         plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, '.', 'test.html')
-            }),
-            /*
-            new WebpackShellPlugin({
-                onBuildExit: "mocha "+ path.resolve(__dirname, 'test/', 'test_bundle.js')
             })
-            */
         ],
         module: {
         rules: [
@@ -59,8 +55,7 @@ module.exports = ({ mode }) => {
             compress: true,
             port: 9010,
             inline: true,
-            liveReload: true
-            //hot: true
+            hot: true //If this is false then liveReload implicitly true
         }
     };
 };

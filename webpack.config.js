@@ -9,7 +9,7 @@ module.exports = ({ mode }) => {
         entry: path.join(__dirname, 'src', 'index.ts'),
         output:  {
             path: path.join(__dirname, "/dist"),
-            filename: "index_bundle.js"
+            filename: "bundle.js"
         }, 
         plugins: [
             new CleanWebpackPlugin(),
@@ -63,8 +63,7 @@ module.exports = ({ mode }) => {
             compress: true,
             port: 9000,
             inline: true,
-            liveReload: true
-            //hot: true
+            hot: true //If this is false then liveReload implicitly true
         }
     };
 };
