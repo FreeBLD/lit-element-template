@@ -8,10 +8,11 @@ const path = require('path');
 module.exports = ({ mode }) => {
     return {
         mode,
-        entry: path.resolve(__dirname, '.', 'allTests.js'),
+        entry: path.resolve(__dirname, '.', 'all.tests.js'),
         output: {
-            path: path.join(__dirname, '/test'),
-            filename: 'testBundle.js',
+            path: path.join(__dirname, '/build'),
+            filename: '[name].bundle.js',
+            //chunkFilename: '[name].bundle.js'
         },
         plugins: [
             new CleanWebpackPlugin(),
@@ -51,11 +52,17 @@ module.exports = ({ mode }) => {
             ignored: /node_modules/
         },
         devServer: {
-            contentBase: path.join(__dirname, '/test'),
+            contentBase: path.join(__dirname, '/build'),
             compress: true,
             port: 9010,
             inline: true,
-            hot: true //If this is false then liveReload implicitly true
+            //hot: true //If this is false then liveReload implicitly true
+        },
+        optimization: {
+            minimize: mode === 'production' ? true : false,
+            splitChunks: {
+                chunks: 'all'
+            }
         }
     };
 };

@@ -16,11 +16,13 @@ describe('MyComponentWithStyles Component', function() {
         assert.ok(myComponentWithStyles);
     });
 
-    it("has an h2 heading with the style property 'display' set to 'block'", function() {
+    it("has an h2 heading with the style property 'color' set to 'blue'", function() {
         document.body.appendChild(myComponentWithStyles);
-        const display = window.getComputedStyle(myComponentWithStyles, 'h2');
-        console.log(display);
-        assert.equal(display.getPropertyValue('display'), 'block');
+        const shadow = myComponentWithStyles.shadowRoot;
+        console.log(shadow.children[1]);
+        const h2 = window.getComputedStyle(shadow.children[1]);
+        console.log(h2);
+        assert.equal(h2.getPropertyValue('color'), 'blue');
     })
 
     it("MyComponentwithStyles has a style attribute 'display' with value of 'inline'", function() {
@@ -37,6 +39,7 @@ describe('MyComponentWithStyles Component', function() {
         // Element must me attached to the DOM to have a valid style object assigned. Otherwise the class is style uninitialized
         document.body.appendChild(myComponentWithStyles);
         const color1 = window.getComputedStyle(myComponentWithStyles, ':host');
+        //The pseudo-element :host is not necessary. The element itself is already understood to be the host.
         assert.equal(color1.getPropertyValue('color'), red);
     })
 

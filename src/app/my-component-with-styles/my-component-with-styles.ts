@@ -10,8 +10,9 @@ export class MyComponentWithStyles extends LitElement {
             }
         `;
         const style2 = css`
-            h2 {
+            #fuckingheading {
                 display: block;
+                color: blue;
             }
         `;
         return [style, style2];
@@ -24,8 +25,8 @@ export class MyComponentWithStyles extends LitElement {
 
     render() {
         return html`
-                    <h1>Hello </h1>
-                    <h2> World!</h2>
+                    <h1 id="fuckingheading">Hello </h1>
+                    <h2 > World!</h2>
         `;
     }
 }
