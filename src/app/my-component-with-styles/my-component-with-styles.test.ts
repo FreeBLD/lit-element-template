@@ -1,14 +1,18 @@
 import { MyComponentWithStyles } from './my-component-with-styles';
 import * as assert from 'assert';
 
-let myComponentWithStyles = new MyComponentWithStyles();
+let myComponentWithStyles: MyComponentWithStyles;
+let shadow: ShadowRoot;
 
 describe('MyComponentWithStyles Component', function() {
     beforeEach(() => {
         myComponentWithStyles = new MyComponentWithStyles();
+        document.body.appendChild(myComponentWithStyles);
+        shadow = myComponentWithStyles.shadowRoot;
     })
 
     afterEach(() => {
+        document.body.removeChild(myComponentWithStyles);
         myComponentWithStyles = null;
     });
 
@@ -16,14 +20,16 @@ describe('MyComponentWithStyles Component', function() {
         assert.ok(myComponentWithStyles);
     });
 
-    it("has an h2 heading with the style property 'color' set to 'blue'", function() {
-        document.body.appendChild(myComponentWithStyles);
-        const shadow = myComponentWithStyles.shadowRoot;
-        console.log(shadow.children[1]);
-        const h2 = window.getComputedStyle(shadow.children[1]);
-        console.log(h2);
-        assert.equal(h2.getPropertyValue('color'), 'blue');
-    })
+    it("has an h2 heading with the style property 'color' set to 'blue'", function(done) {
+        // For some reason do be able to querySelector() the shadow root a setTimeout is needed otherwise it returns null
+        const blue = 'rgb(0, 0, 255)';
+        setTimeout(() => {
+            const h1 = shadow.querySelector('h1');
+            const color = getComputedStyle(h1).getPropertyValue('color');
+            assert.equal(color, blue);
+            done();
+        }, 0);
+    });
 
     it("MyComponentwithStyles has a style attribute 'display' with value of 'inline'", function() {
         const testComponent = document.createElement('my-component-with-styles');
@@ -41,6 +47,5 @@ describe('MyComponentWithStyles Component', function() {
         const color1 = window.getComputedStyle(myComponentWithStyles, ':host');
         //The pseudo-element :host is not necessary. The element itself is already understood to be the host.
         assert.equal(color1.getPropertyValue('color'), red);
-    })
-
-})
+    });
+});

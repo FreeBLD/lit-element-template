@@ -12,7 +12,6 @@ module.exports = ({ mode }) => {
         output: {
             path: path.join(__dirname, '/build'),
             filename: '[name].bundle.js',
-            //chunkFilename: '[name].bundle.js'
         },
         plugins: [
             new CleanWebpackPlugin(),
@@ -60,9 +59,6 @@ module.exports = ({ mode }) => {
         },
         optimization: {
             minimize: mode === 'production' ? true : false,
-            splitChunks: {
-                chunks: 'all'
-            }
         }
     };
 };
