@@ -1,8 +1,6 @@
 // This is a webpack style config file for unit testing using mocha
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 const path = require('path');
  
 module.exports = ({ mode }) => {
