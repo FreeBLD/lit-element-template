@@ -28,27 +28,27 @@ module.exports = ({ mode }) => {
             })
         ],
         module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.test\.js$/,
-                use: 'mocha-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.test\.ts$/,
-                use: 'mocha-loader',
-                exclude: /node_modules/
-            },
-            { 
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'source-map-loader'
-            }
+            rules: [
+                {
+                    test: /\.ts$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.test\.js$/,
+                    use: 'mocha-loader',
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.test\.ts$/,
+                    use: 'mocha-loader',
+                    exclude: /node_modules/
+                },
+                { 
+                    enforce: 'pre',
+                    test: /\.js$/,
+                    loader: 'source-map-loader'
+                }
             ]
         },
         resolve: {
