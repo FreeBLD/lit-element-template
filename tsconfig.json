@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": false,
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "target": "ES2015",
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "Node"
+    }
+}
